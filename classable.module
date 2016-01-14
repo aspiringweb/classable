@@ -1,0 +1,100 @@
+<?php
+/**
+ * @file
+ * Module file for 'Classable'.
+ */
+
+require_once __DIR__ . "/src/Helper/ControllerHelper.php";
+require_once __DIR__ . "/src/CastToClassInterface.php";
+
+require_once __DIR__ . "/src/Controller/TaxonomyTermController.php";
+require_once __DIR__ . "/src/Controller/EntityAPIController.php";
+require_once __DIR__ . "/src/Controller/NodeController.php";
+
+require_once __DIR__ . "/src/Entity/Term.php";
+require_once __DIR__ . "/src/Entity/AbstractEntity.php";
+require_once __DIR__ . "/src/Entity/Node.php";
+
+use Drupal\classable\CastToClassInterface;
+
+/**
+ * Implements hook_entity_info_alter().
+ */
+function classable_entity_info_alter(&$entity_info) {
+  // Support all entities with 'EntityAPIController'
+  // like ECK, field collection etc.
+  foreach ($entity_info as $entity_type => $item) {
+    if ($item['controller class'] === 'EntityAPIController') {
+      $controller = '\Drupal\classable\Controller\EntityAPIController';
+      $entity_info[$entity_type]['controller class'] = $controller;
+    }
+  }
+
+  // Override controllers that are not an instance of 'EntityAPIController'.
+  $controller_overrides_map = array(
+    'taxonomy_term' => '\Drupal\classable\Controller\TaxonomyTermController',
+    'node' => '\Drupal\classable\Controller\NodeController',
+  );
+
+  // Expose the API to let other modules alter the controller map.
+  drupal_alter('classable_controller_overrides', $controller_overrides_map);
+
+  // Set the controllers.
+  foreach ($controller_overrides_map as $entity_type => $controller) {
+    if (!isset($entity_info[$entity_type])) {
+      continue;
+    }
+
+    // Set the override controller class.
+    $entity_info[$entity_type]['controller class'] = $controller;
+
+    // If the entity controller is not an instance of EntityAPIController
+    // The entity creation is done by a callback function.
+    $implements = class_implements($controller);
+    if (in_array('EntityAPIControllerInterface', $implements) === FALSE &&
+      in_array('Drupal\classable\CastToClassInterface', $implements)) {
+      if ($entity_info[$entity_type]['creation callback'] !== '_classable_create_entity_callback') {
+        $entity_info[$entity_type]['creation callback original'] = $entity_info[$entity_type]['creation callback'];
+      }
+      $entity_info[$entity_type]['creation callback'] = '_classable_create_entity_callback';
+    }
+  }
+}
+
+/**
+ * This will cast an entity to the correct type on creation (entity_create).
+ *
+ * It uses the original 'creation callback' and then
+ * cast the created entity to the correct class.
+ *
+ * @param array $values
+ *   The values to create the new entity with.
+ * @param string $entity_type
+ *   The entity type to create.
+ *
+ * @return mixed
+ *   The created class.
+ */
+function _classable_create_entity_callback($values, $entity_type) {
+  $info = entity_get_info($entity_type);
+  $entity = $info['creation callback original']($values, $entity_type);
+
+  /* @var CastToClassInterface $controller */
+  $controller = entity_get_controller($entity_type);
+
+  return $controller->castToClass($entity);
+}
+
+/**
+ * We want to be the last hook for 'hook_entity_info_alter'.
+ *
+ * Implements hook_module_implements_alter().
+ */
+function classable_module_implements_alter(&$implementations, $hook) {
+  $hooks = array('entity_info_alter');
+  if (in_array($hook, $hooks) && isset($implementations['classable'])) {
+    $group = $implementations['classable'];
+    unset($implementations['classable']);
+    $implementations['classable'] = $group;
+  }
+}
