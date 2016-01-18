@@ -1,6 +1,7 @@
 <?php
 /**
- * @file TaxonomyTermController
+ * @file
+ * TaxonomyTermController.
  */
 
 namespace Drupal\classable\Controller;
@@ -9,10 +10,11 @@ use Drupal\classable\CastToClassInterface;
 use Drupal\classable\Helper\ControllerHelper;
 
 /**
+ * Class TaxonomyTermController.
+ *
  * This will add the option to define a class instead of the default
  * \stdClass for a Term.
  *
- * Class TaxonomyTermController
  * @package Drupal\classable\Controller
  */
 class TaxonomyTermController extends \TaxonomyTermController

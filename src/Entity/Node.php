@@ -1,6 +1,7 @@
 <?php
 /**
- * @file Node
+ * @file
+ * Node.
  */
 
 namespace Drupal\classable\Entity;
@@ -9,6 +10,7 @@ use EntityDrupalWrapper;
 
 /**
  * Class Node.
+ *
  * @package Drupal\classable\Entity
  */
 class Node extends \stdClass {

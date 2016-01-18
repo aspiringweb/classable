@@ -1,10 +1,16 @@
 <?php
 /**
- * @file ControllerHelper
+ * @file
+ * ControllerHelper.
  */
 
 namespace Drupal\classable\Helper;
 
+/**
+ * Class ControllerHelper.
+ *
+ * @package Drupal\classable\Helper
+ */
 class ControllerHelper {
   /**
    * @var array $entityInfo

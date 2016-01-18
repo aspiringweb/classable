@@ -1,6 +1,7 @@
 <?php
 /**
- * @file EntityAPIController
+ * @file
+ * EntityAPIController.
  */
 
 namespace Drupal\classable\Controller;
@@ -8,10 +9,11 @@ namespace Drupal\classable\Controller;
 use Drupal\classable\Helper\ControllerHelper;
 
 /**
+ * Class EntityAPIController.
+ *
  * This will add the option to define a class instead of the
  * default class for any entity type that uses \EntityAPIController.
  *
- * Class EntityAPIController.
  * @package Drupal\classable\Controller
  */
 class EntityAPIController extends \EntityAPIController {
@@ -43,6 +45,12 @@ class EntityAPIController extends \EntityAPIController {
 
   /**
    * Implements EntityAPIControllerInterface.
+   *
+   * @param array $values
+   *   The values to create the entity.
+   *
+   * @return mixed
+   *   The newly created object.
    */
   public function create(array $values = array()) {
     $values += array('is_new' => TRUE);

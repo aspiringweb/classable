@@ -1,12 +1,14 @@
 <?php
 /**
- * @file CastToClassInterface.
+ * @file
+ * CastToClassInterface.
  */
 
 namespace Drupal\classable;
 
 /**
- * Interface CastToClassInterface
+ * Interface CastToClassInterface.
+ *
  * @package Drupal\classable
  */
 interface CastToClassInterface {

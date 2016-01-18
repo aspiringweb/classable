@@ -1,6 +1,7 @@
 <?php
 /**
- * @file NodeController
+ * @file
+ * NodeController.
  */
 
 namespace Drupal\classable\Controller;
@@ -9,10 +10,11 @@ use Drupal\classable\CastToClassInterface;
 use Drupal\classable\Helper\ControllerHelper;
 
 /**
+ * Class NodeController.
+ *
  * This will add the option to define a class instead
  * of the default \stdClass for a Node.
  *
- * Class NodeController
  * @package Drupal\classable\Controller
  */
 class NodeController extends \NodeController

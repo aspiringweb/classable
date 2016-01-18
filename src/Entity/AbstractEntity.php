@@ -1,12 +1,14 @@
 <?php
 /**
- * @file AbstractEntity.
+ * @file
+ * AbstractEntity.
  */
 
 namespace Drupal\classable\Entity;
 
 /**
  * Class AbstractEntity.
+ *
  * @package Drupal\classable\Entity
  */
 abstract class AbstractEntity extends \Entity {

@@ -1,6 +1,7 @@
 <?php
 /**
- * @file Term.
+ * @file
+ * Term.
  */
 
 namespace Drupal\classable\Entity;
@@ -9,6 +10,7 @@ use EntityDrupalWrapper;
 
 /**
  * Class Term.
+ *
  * @package Drupal\classable\Entity
  */
 class Term extends \stdClass {
