@@ -1,4 +1,7 @@
 <?php
+/**
+ * @file NodeController
+ */
 
 namespace Drupal\classable\Controller;
 
@@ -48,4 +51,5 @@ class NodeController extends \NodeController
   public function castToClass(\stdClass $node) {
     return $this->helper->reCastSingleEntity($node);
   }
+
 }

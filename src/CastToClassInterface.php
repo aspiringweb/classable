@@ -1,7 +1,14 @@
 <?php
+/**
+ * @file CastToClassInterface.
+ */
 
 namespace Drupal\classable;
 
+/**
+ * Interface CastToClassInterface
+ * @package Drupal\classable
+ */
 interface CastToClassInterface {
   /**
    * Cast an entity to class.
@@ -16,4 +23,5 @@ interface CastToClassInterface {
    *   The entity casted to correct class.
    */
   public function castToClass(\stdClass $entity);
+
 }

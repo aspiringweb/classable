@@ -1,4 +1,7 @@
 <?php
+/**
+ * @file EntityAPIController
+ */
 
 namespace Drupal\classable\Controller;
 
@@ -8,7 +11,7 @@ use Drupal\classable\Helper\ControllerHelper;
  * This will add the option to define a class instead of the
  * default class for any entity type that uses \EntityAPIController.
  *
- * Class EntityAPIController
+ * Class EntityAPIController.
  * @package Drupal\classable\Controller
  */
 class EntityAPIController extends \EntityAPIController {
@@ -53,4 +56,5 @@ class EntityAPIController extends \EntityAPIController {
     }
     return (object) $values;
   }
+
 }

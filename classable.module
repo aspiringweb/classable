@@ -75,7 +75,7 @@ function classable_entity_info_alter(&$entity_info) {
  * @return mixed
  *   The created class.
  */
-function _classable_create_entity_callback($values, $entity_type) {
+function _classable_create_entity_callback(array $values, $entity_type) {
   $info = entity_get_info($entity_type);
   $entity = $info['creation callback original']($values, $entity_type);
 

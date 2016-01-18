@@ -1,9 +1,16 @@
 <?php
+/**
+ * @file Node
+ */
 
 namespace Drupal\classable\Entity;
 
 use EntityDrupalWrapper;
 
+/**
+ * Class Node.
+ * @package Drupal\classable\Entity
+ */
 class Node extends \stdClass {
 
   /**
@@ -98,4 +105,5 @@ class Node extends \stdClass {
     }
     return $this->wrapper;
   }
+
 }

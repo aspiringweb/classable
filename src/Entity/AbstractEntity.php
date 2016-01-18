@@ -1,7 +1,14 @@
 <?php
+/**
+ * @file AbstractEntity.
+ */
 
 namespace Drupal\classable\Entity;
 
+/**
+ * Class AbstractEntity.
+ * @package Drupal\classable\Entity
+ */
 abstract class AbstractEntity extends \Entity {
   /**
    * Abstract entity constructor.
@@ -17,4 +24,5 @@ abstract class AbstractEntity extends \Entity {
     }
     parent::__construct($values, $entity_type);
   }
+
 }

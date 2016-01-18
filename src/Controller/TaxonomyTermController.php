@@ -1,4 +1,7 @@
 <?php
+/**
+ * @file TaxonomyTermController
+ */
 
 namespace Drupal\classable\Controller;
 
@@ -48,4 +51,5 @@ class TaxonomyTermController extends \TaxonomyTermController
   public function castToClass(\stdClass $entity) {
     return $this->helper->reCastSingleEntity($entity);
   }
+
 }
