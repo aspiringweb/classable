@@ -106,8 +106,7 @@ class ControllerHelper {
   /**
    * Returns the bundle key.
    *
-   * Defaults to the entity type if the entity type
-   * does not make use of different bundles.
+   * Defaults to bundle.
    *
    * @return string
    *   The bundle key.
@@ -124,7 +123,7 @@ class ControllerHelper {
       $this->bundleKey = $entity_info['bundle keys']['bundle'];
     }
     else {
-      $this->bundleKey = 'entityType';
+      $this->bundleKey = 'bundle';
     }
     return $this->bundleKey;
   }
@@ -175,6 +174,9 @@ class ControllerHelper {
    */
   protected function getBundleNameFromEntity($entity) {
     $bundle_key = $this->getBundleKey();
+    if ($entity instanceof \Entity) {
+      return $entity->bundle();
+    }
     if (!is_string($bundle_key)) {
       return NULL;
     }
