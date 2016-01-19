@@ -1,16 +1,7 @@
 <?php
-/**
- * @file
- * ControllerHelper.
- */
 
 namespace Drupal\classable\Helper;
 
-/**
- * Class ControllerHelper.
- *
- * @package Drupal\classable\Helper
- */
 class ControllerHelper {
   /**
    * @var array $entityInfo
@@ -115,6 +106,9 @@ class ControllerHelper {
   /**
    * Returns the bundle key.
    *
+   * Defaults to the entity type if the entity type
+   * does not make use of different bundles.
+   *
    * @return string
    *   The bundle key.
    */
@@ -123,11 +117,14 @@ class ControllerHelper {
       return $this->bundleKey;
     }
     $entity_info = $this->entityInfo;
-    if (isset($entity_info['entity keys']['bundle'])) {
+    if (!empty($entity_info['entity keys']['bundle'])) {
       $this->bundleKey = $entity_info['entity keys']['bundle'];
     }
-    elseif (isset($entity_info['bundle keys']['bundle'])) {
+    elseif (!empty($entity_info['bundle keys']['bundle'])) {
       $this->bundleKey = $entity_info['bundle keys']['bundle'];
+    }
+    else {
+      $this->bundleKey = 'entityType';
     }
     return $this->bundleKey;
   }
@@ -204,5 +201,4 @@ class ControllerHelper {
     }
     return NULL;
   }
-
 }
