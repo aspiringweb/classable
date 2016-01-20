@@ -67,8 +67,10 @@ See 'classable.api.php' how to specify your class with hooks.
 
 ```PHP
     function hook_entity_info_alter(&$entity_info) {
-      // Set class on ECK entity.
-      $entity_info['<entity name>']['entity class'] = '\Entity';
+      // Set class on taxonomy term bundle.
+      $entity_info['taxonomy_term']['bundles']['<vocabulary name>']['entity class'] = '\Drupal\classable\Entity\Term';
+      // Set class on node bundle.
+      $entity_info['node']['bundles']['<bundle name>']['entity class'] = '\Drupal\classable\Entity\Node';
     ...
 ```
 
