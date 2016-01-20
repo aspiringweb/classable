@@ -78,6 +78,8 @@ class Node extends \stdClass {
   }
 
   /**
+   * Projected wrapper property.
+   *
    * This property is not defined because protected or private properties will
    * make the DBGp protocol (xml) from xdebug invalid on array cast
    * and crashes the xdebug clients.
@@ -89,8 +91,8 @@ class Node extends \stdClass {
    * http://bugs.xdebug.org/view.php?id=924
    *
    * Node to array casting is done inside:
-   * @see template_preprocess_node
    *
+   * @see template_preprocess_node
    * @private
    * @var EntityDrupalWrapper $wrapper
    */

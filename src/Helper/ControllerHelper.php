@@ -13,18 +13,22 @@ namespace Drupal\classable\Helper;
  */
 class ControllerHelper {
   /**
+   * The info for the entity.
+   *
    * @var array $entityInfo
    */
   protected $entityInfo;
 
   /**
-   * Associative array bundle_name -> class_name|NULL
+   * Associative array bundle_name -> class_name|NULL.
    *
    * @var string[] $bundleNameClassMap
    */
   protected $bundleNameClassMap = array();
 
   /**
+   * The key used to define the bundle type from a entity.
+   *
    * @var string $bundleKey
    */
   protected $bundleKey = NULL;

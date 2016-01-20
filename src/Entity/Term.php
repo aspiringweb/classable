@@ -70,6 +70,8 @@ class Term extends \stdClass {
   }
 
   /**
+   * The wrapper for this entity.
+   *
    * @var EntityDrupalWrapper
    */
   private $wrapper;
