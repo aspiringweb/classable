@@ -66,13 +66,25 @@ The reason for this module is that you can have
 See 'classable.api.php' how to specify your class with hooks.
 
 ```PHP
-function hook_entity_info_alter(&$entity_info) {
-  // Set class on ECK entity.
-  $entity_info['<entity name>']['entity class'] = '\Entity';
-...
+    function hook_entity_info_alter(&$entity_info) {
+      // Set class on ECK entity.
+      $entity_info['<entity name>']['entity class'] = '\Entity';
+    ...
 ```
 
 The module does NOT set the default Drupal\classable\Entity\Node or Drupal\classable\Entity\Term. 
 The reason for this is that we don't want to provide a default super class Like \Entity ([why-getter-and-setter-methods-are-evil](http://www.javaworld.com/article/2073723/core-java/why-getter-and-setter-methods-are-evil.html))
 And it's only needed when the entity is used inside your own codebase with functions that are useful for your specific 
 purpose and domain.
+
+You can implement this with the following hook:
+
+```PHP
+    function hook_entity_info_alter(&$entity_info) {
+      // Make all terms instance of Term.
+      $entity_info\['taxonomy_term']['entity class'] = '\Drupal\classable\Entity\Term';
+      
+      // Make all nodes instance of Node.
+      $entity_info['node']['entity class'] = '\Drupal\classable\Entity\Node';
+    }
+```
