@@ -79,7 +79,7 @@ The reason for this is that we don't want to provide a default super class Like 
 And it's only needed when the entity is used inside your own codebase with functions that are useful for your specific 
 purpose and domain.
 
-You can implement this with the following hook:
+You can still implement this with the following hook:
 
 ```PHP
     function hook_entity_info_alter(&$entity_info) {
