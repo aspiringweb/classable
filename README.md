@@ -88,3 +88,11 @@ You can implement this with the following hook:
       $entity_info['node']['entity class'] = '\Drupal\classable\Entity\Node';
     }
 ```
+
+## Make file
+```
+projects[classable][type] = module
+projects[classable][download][type] = git
+projects[classable][download][branch] = "7.x-1.x"
+projects[classable][download][url] = "http://github.com/ibuildingsnl/classable.git"
+```
