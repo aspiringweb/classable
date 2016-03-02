@@ -10,10 +10,12 @@ require_once __DIR__ . "/src/CastToClassInterface.php";
 require_once __DIR__ . "/src/Controller/TaxonomyTermController.php";
 require_once __DIR__ . "/src/Controller/EntityAPIController.php";
 require_once __DIR__ . "/src/Controller/NodeController.php";
+require_once __DIR__ . "/src/Controller/UserController.php";
 
 require_once __DIR__ . "/src/Entity/Term.php";
 require_once __DIR__ . "/src/Entity/AbstractEntity.php";
 require_once __DIR__ . "/src/Entity/Node.php";
+require_once __DIR__ . "/src/Entity/User.php";
 
 use Drupal\classable\CastToClassInterface;
 
@@ -34,6 +36,7 @@ function classable_entity_info_alter(&$entity_info) {
   $controller_overrides_map = array(
     'taxonomy_term' => '\Drupal\classable\Controller\TaxonomyTermController',
     'node' => '\Drupal\classable\Controller\NodeController',
+    'user' => '\Drupal\classable\Controller\UserController',
   );
 
   // Expose the API to let other modules alter the controller map.
