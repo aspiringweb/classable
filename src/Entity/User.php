@@ -35,13 +35,13 @@ class User extends \stdClass {
   }
 
   /**
-   * Returns if the User is the Anonymous user.
+   * Returns if the User is a anonymous user.
    *
    * @return bool
    *   TRUE if published.
    */
   public function isAnonymous() {
-    return !$this->uid;
+    return !$this->uid || in_array('anonymous user', $this->roles);
   }
 
   /**
