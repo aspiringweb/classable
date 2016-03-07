@@ -35,6 +35,9 @@ function hook_entity_info_alter(&$entity_info) {
 
   // Set class node bundle.
   $entity_info['node']['bundles']['<bundle name>']['entity class'] = '\Drupal\classable\Entity\Node';
+
+  // Set class on user entity.
+  $entity_info['user']['entity class'] = '\Drupal\classable\Entity\User';
 }
 
 /**

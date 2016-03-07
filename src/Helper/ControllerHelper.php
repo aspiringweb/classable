@@ -177,14 +177,22 @@ class ControllerHelper {
    *   The name of the bundle.
    */
   protected function getBundleNameFromEntity($entity) {
-    $bundle_key = $this->getBundleKey();
     if ($entity instanceof \Entity) {
       return $entity->bundle();
     }
-    if (!is_string($bundle_key)) {
-      return NULL;
+
+    $bundle_key = $this->getBundleKey();
+
+    if (isset($entity->{$bundle_key})) {
+      return $entity->{$bundle_key};
     }
-    return $entity->{$bundle_key};
+
+    if (count($this->entityInfo['bundles']) === 1) {
+      $bundle_names = array_keys($this->entityInfo['bundles']);
+      return reset($bundle_names);
+    }
+
+    return NULL;
   }
 
   /**
