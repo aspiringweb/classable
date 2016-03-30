@@ -1,3 +1,8 @@
 name = classable
 description = Make bundles Classable.
 core = 7.x
+
+dependencies[] = node
+dependencies[] = user
+dependencies[] = taxonomy
+dependencies[] = entity
