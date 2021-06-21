@@ -54,7 +54,7 @@ class Node extends \stdClass {
    *   TRUE if published.
    */
   public function isPublished() {
-    return $this->status === NODE_PUBLISHED;
+    return $this->status == NODE_PUBLISHED;
   }
 
   /**
